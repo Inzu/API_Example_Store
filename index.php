@@ -13,10 +13,10 @@ $inzu = json_decode($json);
 
 foreach ($inzu->data as $product) { 
 
-$variations=NULL;
-$price=NULL;
-
 $title=$product->title;
+
+$price_info=NULL; //reset for loop
+$variations=NULL; //reset for loop
 
 
 //A second loop if the product has variations
@@ -24,13 +24,15 @@ $title=$product->title;
 if(!$product->item_code){
 	
 	foreach ($product->item as $variation) { 
+	
+	$price=$variation->{'price_'.$loc};	
 		
 	///Build variations drop down
-	$variations.="<option value=\"{$variation->item_code},{$variation->price_us}\">{$variation->variation_name} - &#36;{$variation->price_us}</option>";
+	$variations.="<option value=\"{$variation->item_code},{$price}\">{$variation->variation_name} - &#36;{$price}</option>";
 
 	}
 
-$price.=<<<EOD
+$price_info.=<<<EOD
 <select>
 $variations
 </select>
@@ -40,11 +42,13 @@ EOD;
 //End variations
 
 }else{
+
+$price=$product->{'price_'.$loc};
 	
-$price=<<<EOD
+$price_info=<<<EOD
 <input name="item_code" type="hidden" value="{$product->item_code}" />
-<input name="price" type="hidden" value="{$product->price_us}" />
-&#36;{$product->price_us}
+<input name="price" type="hidden" value="{$price}" />
+{$currency}{$price}
 EOD;
 
 }
@@ -64,7 +68,7 @@ $items.=<<<EOD
    
     <div class="price-buy">
     <!--The price information and buy button must be in the same container!-->
-    $price
+    $price_info
     <a id="order-sample" href="javascript: void(0);" onClick="store_cart.updateCart(this)">BUY</a>
     </div>
     
