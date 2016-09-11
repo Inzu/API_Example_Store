@@ -72,7 +72,7 @@ if($item_array){
 					</td>
 					<td align="right" valgin="middle"></td>
 					<td align="right" valgin="middle">
-					<a href="javascript: cart.deleteItem('<?php echo $i; ?>')"  class="remove">remove</a>
+					<a href="javascript: cart.deleteItem(<?php echo $item->item_code.",".$i; ?>)"  class="remove">remove</a>
 					</td>
 				</tr>
 			</table>

@@ -207,21 +207,28 @@ Inzu_cartEdit.prototype.quantityUpdated = function(){
 }
 
 
-Inzu_cartEdit.prototype.deleteItem = function(i){
+Inzu_cartEdit.prototype.deleteItem = function(item_code,i){
 	
-	var row = document.getElementById('form_main_'+i);
+	for( var key in this.cookie.cart ){
+		if( this.cookie.cart[key].item_code === item_code.toString() ){
+			//Adjust cookie
+			this.cookie.cart.splice(key,1);
+			this.helper.setCookie('cart', JSON.stringify(this.cookie), 7);
+		}
+	}
 	
+
 	//Delete and fade out row
-	this.helper.fadeOut(this, row);	  
-	
-	//Adjust cookie
-	this.cookie.cart.splice(parseInt(i),1);
-	
-	this.helper.setCookie('cart', JSON.stringify(this.cookie), 7);
-	
+	this.helper.fadeOut(this, document.getElementById('form_main_'+i));	  
+
 	//Update display
 	this.helper.loopCart(this.cookie.cart);
 	this.total.innerHTML = this.helper.cart_data.price.toFixed(2);
+	
+	//Update checkout link
+	var checkout = this.helper.cart_data.items;	
+	document.getElementById("checkout_link").setAttribute("href", checkout);
+
 	
 }
 
