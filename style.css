@@ -39,18 +39,24 @@ body{
 }
 
 
-#cart-updated{
-	background-color: #f1f1f1;
+.update{
 	padding: 4px 6px;
 	display: inline-block;
 	margin-top: 3px;
-	float: left;
-	background-color: #6dc65c;;
+	background-color: #6dc65c;
 	border-radius: 4px;
 	text-decoration: none;
 	color: #fff;
 	opacity: 0;
 }
+
+	.update#cart-updated{
+		float: left;
+	}
+
+	.update#quantity-updated{
+		margin-top: 12px;
+	}
 
 
 #product_list{
@@ -124,9 +130,10 @@ body{
 	
 	#cart-edit .remove{
 		background-color: #6a5ca9;
+		cursor:pointer;
 	}
 	
-	#cart-edit .checkout{
+	#cart-edit #checkout_link{
 		background-color: #c77ac8;
 		box-sizing: border-box;
 		margin-top: 10px;

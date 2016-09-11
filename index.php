@@ -69,7 +69,7 @@ $items.=<<<EOD
     <div class="price-buy">
     <!--The price information and buy button must be in the same container!-->
     $price_info
-    <a id="order-sample" href="javascript: void(0);" onClick="store_cart.updateCart(this)">BUY</a>
+    <a id="order-sample" href="javascript: void(0);" onClick="store_cart.addItem(this)">BUY</a>
     </div>
     
 </div>
@@ -82,7 +82,7 @@ EOD;
 
 <html>
 <head>
-<script type="text/javascript" src="add_item.js"></script>
+<script type="text/javascript" src="cart.js"></script>
 <link href="style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -94,10 +94,10 @@ EOD;
 <div class="read-out">Items:  <span id="cart-size"></span></div>
 <div class="read-out"><span>Total:  <?php echo $currency; ?></span><span id="cart-total"></span><a class="button cart-edit" href="cart_edit.php">edit</a><a class="button cart-checkout" id="cart-checkout" href="">checkout</a></div>
 
-<div class="read-out" id="cart-updated"></div>
+<div class="update" id="cart-updated"></div>
 
 <script type="text/javascript">
-var store_cart = new Inzu_cart("<?php echo $pay_url; ?>", "<?php echo $pay_callback; ?>");	
+var store_cart = new Inzu_cart("<?php echo $pay_url; ?>", "<?php echo $pay_callback; ?>");
 </script>
 
 </div>
@@ -105,6 +105,7 @@ var store_cart = new Inzu_cart("<?php echo $pay_url; ?>", "<?php echo $pay_callb
 <div id="product_list">
 <?php echo $items; ?>
 </div>
+
 
 </body>	
 </html>

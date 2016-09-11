@@ -45,8 +45,7 @@ Change the code in these files to suit your site design.
 
 FILES
 
-add_item.js - this will add items to a users cart using AJAX (with cart.php).
-cart_data.php - this will process the cookie used to store cart information.
+cart.js - this script manages the cart cookie for adding items and editing the cart.
 cart_edit.php - let users edit their cart.
 config.php - your API account settings and some shop settings such as currency and callback URL.
 index.php - display an example store page.
