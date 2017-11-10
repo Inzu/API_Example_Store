@@ -1,49 +1,47 @@
 <?php
 
-
+include("functions.php"); 
 include("config.php"); 
 
 
 //INZU API CALL
-$json = file_get_contents("$api_base/store/product?api_key={$api_key}&page=1&page_rows=16");
-$inzu = json_decode($json); 
+$inzu = INZU_GET("store/product", array("page"=>"1", "page_rows"=>"16"));
 
 
 //A loop for each product
 
-foreach ($inzu->data as $product) { 
+foreach ( $inzu->data as $product ) { 
 
-$title=$product->title;
+$title = $product->title;
 
-$price_info=NULL; //reset for loop
-$variations=NULL; //reset for loop
+$price_inf = NULL; //reset for loop
+$variations = NULL; //reset for loop
 
 
 //A second loop if the product has variations
 
-if(!$product->item_code){
+if ( !$product->item_code ) {
 	
 	foreach ($product->item as $variation) { 
 	
-	$price=$variation->{'price_'.$loc};	
+	$price = $variation->{'price_'.$loc};	
 		
 	///Build variations drop down
-	$variations.="<option value=\"{$variation->item_code},{$price}\">{$variation->variation_name} - &#36;{$price}</option>";
+	$variations .= "<option value=\"{$variation->item_code},{$price}\">{$variation->variation_name} - &#36;{$price}</option>";
 
 	}
 
-$price_info.=<<<EOD
+$price_info=<<<EOD
 <select>
 $variations
 </select>
 EOD;
 
-
 //End variations
 
-}else{
+} else {
 
-$price=$product->{'price_'.$loc};
+$price = $product->{'price_'.$loc};
 	
 $price_info=<<<EOD
 <input name="item_code" type="hidden" value="{$product->item_code}" />
