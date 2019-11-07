@@ -160,18 +160,17 @@ function Inzu_cartEdit(pay_url){
 }
 
 
-Inzu_cartEdit.prototype.adjust = function(i, value) {
-	
-	//If the input has been erased do nothing
-	if (value === '' ) return;
+Inzu_cartEdit.prototype.adjust = function(item_code, i, value) {
 
-	//If input is zero remove item
-	if ( value === '0' ) {
-		
-	this.deleteItem(i);
+	//If the input is invalid do nothing
+	if ( isNaN(value)) return;
+
+	if ( value == "0") {
+			
+	this.deleteItem(item_code, i);
 		
 	} else {
-
+		
 	//Adjust quantity of item
 	this.cookie.cart[parseInt(i)].quantity = parseInt(value);
 	
@@ -182,7 +181,7 @@ Inzu_cartEdit.prototype.adjust = function(i, value) {
 	this.total.innerHTML = this.helper.cart_data.price.toFixed(2);
 	
 	//Update checkout link
-	var checkout = this.checkoutlink + this.helper.cart_data.items;	
+	var checkout = this.helper.cart_data.items;	
 	document.getElementById("checkout_link").setAttribute("href", checkout);
 
 	//Set cookie
