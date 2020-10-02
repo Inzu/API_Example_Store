@@ -23,7 +23,7 @@ if ( $data->live_status != "true" ) {
 // E-commerce
 
 $pay_url = 'https://payments.inzu.net/'; // Current Inzu payment URL
-$pay_callback = 'http://mywebsite.com/complete'; //Your website order completion page
+$pay_callback = 'http://mywebsite.com/complete'; // Your website order completion page
 
 $loc = "us"; // Set the lowercase two character code for currency location (United States)
 $currency = "&#36;"; // The currency symbol (Dollars)
