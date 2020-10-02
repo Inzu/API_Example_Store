@@ -4,11 +4,12 @@ include("functions.php");
 include("config.php"); 
 
 
-//INZU API CALL
+// Inzu API call
+
 $inzu = INZU_GET("store/product", array("page"=>"1", "page_rows"=>"16"));
 
 
-//A loop for each product
+// A loop for each product
 
 foreach ( $inzu->data as $product ) { 
 
@@ -18,16 +19,17 @@ $price_inf = NULL; //reset for loop
 $variations = NULL; //reset for loop
 
 
-//A second loop if the product has variations
+// A second loop if the product has variations
 
 if ( !$product->item_code ) {
 	
 	foreach ($product->item as $variation) { 
 	
-	$price = $variation->{'price_'.$loc};	
+		$price = $variation->{'price_'.$loc};	
+			
+		// Build variations drop down
 		
-	///Build variations drop down
-	$variations .= "<option value=\"{$variation->item_code},{$price}\">{$variation->variation_name} - &#36;{$price}</option>";
+		$variations .= "<option value=\"{$variation->item_code},{$price}\">{$variation->variation_name} - &#36;{$price}</option>";
 
 	}
 
@@ -36,8 +38,6 @@ $price_info=<<<EOD
 $variations
 </select>
 EOD;
-
-//End variations
 
 } else {
 
@@ -52,7 +52,7 @@ EOD;
 }
 
 
-//Item display
+// Item Display
 
 $items.=<<<EOD
 
@@ -107,5 +107,3 @@ var store_cart = new Inzu_cart("<?php echo $pay_url; ?>", "<?php echo $pay_callb
 
 </body>	
 </html>
-
-

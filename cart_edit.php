@@ -15,7 +15,8 @@ $pay_url .= '?item_code';
 
 if ( $cart_arr ) {
 
-	//Create total and form item array
+	// Create total and form item array
+	
 	foreach ( $cart_arr->cart as $key => $item ) {	
 		
 		$item_count += $item->quantity;
@@ -48,12 +49,13 @@ $totalprice = number_format($totalprice, 2, '.', ',');
 
 <?php
 
-//Check if there are items in the cart
+// Check if there are items in the cart
+
 if ( $item_array ) {
 
-	//INZU API Call to get product info for items
+	// Inzu API Call to get product info for items
+	
 	$inzu = INZU_GET("store/cart", array("item_array"=>$item_array));
-
 
 	$cart_display = NULL;
 
@@ -71,7 +73,7 @@ if ( $item_array ) {
 					<td align="right" valgin="middle" width="80"><?php echo $currency.$item->{'price_'.$loc}; ?></td>
 					<td align="right" valign="middle" width="8"></td>
 					<td align="left" valgin="middle" width="30">
-					<input type="text" name="quantity" value="<?php echo $item->quantity; ?>" size="2" maxlength="2" onChange="cart.adjust(<?php echo $item->item_code.",".$i; ?>, this.value)" >
+					<input type="text" name="quantity" value="<?php echo $item->quantity; ?>" size="2" maxlength="2" onChange="cart.adjust(<?php echo $item->item_code.",".$i; ?>,this.value)" >
 					</td>
 					<td align="right" valgin="middle"></td>
 					<td align="right" valgin="middle">
@@ -107,7 +109,7 @@ $i++;
     
 	<?php
 
-}else{
+} else {
 
 	echo'<p>You have no items in your cart</p>';
 
