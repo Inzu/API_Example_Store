@@ -26,7 +26,9 @@ function Inzu_cart(checkoutlink,callback) {
 
 }
 
-// Display the cart contents and form checkout URL using the cookie data
+/*
+	Display the cart contents and form checkout URL
+*/
 
 Inzu_cart.prototype.refreshDisplay = function(cart){	
 
@@ -45,7 +47,6 @@ Inzu_cart.prototype.refreshDisplay = function(cart){
 	document.getElementById("cart-checkout").setAttribute("href", checkout);
 	
 }
-
 
 
 Inzu_cart.prototype.addItem = function(el){
@@ -140,7 +141,9 @@ Inzu_cart.prototype.addItem = function(el){
 
 }
 
-// Callback function for when the cart is updated
+/*
+	Cart updated
+ */
 
 Inzu_cart.prototype.cartUpdated = function(){
 
@@ -213,7 +216,10 @@ Inzu_cartEdit.prototype.adjust = function(item_code, i, value) {
 }
 
 
-// Callback function for when quantity is changed
+/*
+	Quantity update
+*/
+
 
 Inzu_cartEdit.prototype.quantityUpdated = function() {
 
@@ -233,6 +239,9 @@ Inzu_cartEdit.prototype.quantityUpdated = function() {
 	
 }
 
+/*
+	Delete item
+*/
 
 Inzu_cartEdit.prototype.deleteItem = function(item_code,i){
 	
@@ -269,12 +278,9 @@ Inzu_cartEdit.prototype.deleteItem = function(item_code,i){
 	
 }
 
-
-
 /*
 	Inzu helper object
 */
-
 
 function Inzu_cartHelper(){}
 
@@ -299,10 +305,9 @@ Inzu_cartHelper.prototype.loopCart = function(cart){
 	
 }
 
-
-
-
-// Fade in selected element
+/*
+	Element fade in
+*/
 
 Inzu_cartHelper.prototype.fadeIn = function(obj, element, fadeDelay){
 	
@@ -328,8 +333,9 @@ Inzu_cartHelper.prototype.fadeIn = function(obj, element, fadeDelay){
     
 }
 
-
-// Fade out selected element. If an element is passed as the 'remove' parameter it will be removed
+/*
+	Element fade out
+*/
 
 Inzu_cartHelper.prototype.fadeOut = function(obj, element, remove) {
 	
@@ -353,9 +359,9 @@ Inzu_cartHelper.prototype.fadeOut = function(obj, element, remove) {
     
 }
 
-
-
-// Get the cookie's JSON data
+/*
+	Get cookie
+*/
 
 Inzu_cartHelper.prototype.getCookie = function(name) {
 	
@@ -366,8 +372,9 @@ Inzu_cartHelper.prototype.getCookie = function(name) {
  
 }
 
-
-// Set a cookie with a name, value and expiration date
+/*
+	Set cookie
+*/
 
 Inzu_cartHelper.prototype.setCookie = function(cname, cvalue, exdays) {
 	

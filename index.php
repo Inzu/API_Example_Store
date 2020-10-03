@@ -3,11 +3,9 @@
 include("functions.php"); 
 include("config.php"); 
 
-
 // Inzu API call
 
 $inzu = INZU_GET("store/product", array("page"=>"1", "page_rows"=>"16"));
-
 
 // A loop for each product
 
@@ -15,9 +13,8 @@ foreach ( $inzu->data as $product ) {
 
 $title = $product->title;
 
-$price_inf = NULL; //reset for loop
-$variations = NULL; //reset for loop
-
+$price_inf = NULL;
+$variations = NULL;
 
 // A second loop if the product has variations
 
@@ -51,7 +48,6 @@ EOD;
 
 }
 
-
 // Item Display
 
 $items.=<<<EOD
@@ -77,33 +73,23 @@ EOD;
 }
 
 ?>
-
 <html>
 <head>
-<script type="text/javascript" src="cart.js"></script>
-<link href="style.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="cart.js"></script>
+	<link href="style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-	
-<div id="cart">
-	
-<strong>Cart</strong>
-
-<div class="read-out">Items:  <span id="cart-size"></span></div>
-<div class="read-out"><span>Total:  <?php echo $currency; ?></span><span id="cart-total"></span><a class="button cart-edit" href="cart_edit.php">edit</a><a class="button cart-checkout" id="cart-checkout" href="">checkout</a></div>
-
-<div class="update" id="cart-updated"></div>
-
-<script type="text/javascript">
-var store_cart = new Inzu_cart("<?php echo $pay_url; ?>", "<?php echo $pay_callback; ?>");
-</script>
-
-</div>
-
-<div id="product_list">
-<?php echo $items; ?>
-</div>
-
-
+	<div id="cart">
+	<strong>Cart</strong>
+	<div class="read-out">Items:  <span id="cart-size"></span></div>
+	<div class="read-out"><span>Total:  <?php echo $currency; ?></span><span id="cart-total"></span><a class="button cart-edit" href="cart_edit.php">edit</a><a class="button cart-checkout" id="cart-checkout" href="">checkout</a></div>
+	<div class="update" id="cart-updated"></div>
+	<script type="text/javascript">
+		var store_cart = new Inzu_cart("<?php echo $pay_url; ?>", "<?php echo $pay_callback; ?>");
+	</script>
+	</div>
+	<div id="product_list">
+		<?php echo $items; ?>
+	</div>
 </body>	
 </html>

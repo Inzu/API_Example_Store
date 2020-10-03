@@ -6,7 +6,6 @@ body {
 	
 }
 
-
 #cart {
 	
 	background-color: #f1f1f1;
@@ -36,7 +35,6 @@ body {
 		margin-left: 4px;
 		
 	}
-	
 
 .read-out .cart-checkout {
 	
@@ -49,7 +47,6 @@ body {
 	background-color: #86c8c8;
 
 }
-
 
 .update {
 	
@@ -77,14 +74,12 @@ body {
 		
 	}
 
-
 #product_list {
 	
 	padding: 20px;
 	width: 60%;
 	
 }
-
 
 .item {
 	
@@ -133,7 +128,6 @@ body {
 		background-color: #ff8967;
 		
 	}
-
 
 #cart-edit {
 	
@@ -194,4 +188,3 @@ body {
 		width: 100%;
 		
 	}
-
